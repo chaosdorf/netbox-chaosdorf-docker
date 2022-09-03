@@ -1,7 +1,7 @@
 FROM netboxcommunity/netbox:v3.3.2
 
 COPY configuration.py /etc/netbox/config/configuration.py
-RUN apk add --no-cache --virtual .build-deps gcc musl-dev
+RUN apt update && apt install -y build-essential
 RUN /opt/netbox/venv/bin/pip install --no-cache-dir netbox-secretstore
-RUN apk del .build-deps gcc musl-dev
+RUN apt purge -y build-essential
 RUN SECRET_KEY="dummy" /opt/netbox/venv/bin/python /opt/netbox/netbox/manage.py collectstatic --no-input
