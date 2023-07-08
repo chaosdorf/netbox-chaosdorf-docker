@@ -1,4 +1,4 @@
-FROM netboxcommunity/netbox:v3.5.4
+FROM netboxcommunity/netbox:v3.4.10
 
 COPY configuration.py /etc/netbox/config/configuration.py
 RUN apt update && apt install -y build-essential
