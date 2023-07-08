@@ -2,6 +2,7 @@ version: '3.4'
 services:
   netbox: &netbox
     image: quay.io/chaosdorf/netbox:add-secretstore-plugin
+    build: .
     depends_on:
     - postgres
     - redis
